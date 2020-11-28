@@ -1,0 +1,23 @@
+{
+  "name": "rover_pi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:barelydroning/rover_pi.git",
+  "license": "MIT",
+  "dependencies": {
+    "babel-polyfill": "6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "serialport": "^9.0.2",
+    "socket.io-client": "^2.0.4",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "babel-cli": "626.0",
+    "babel-preset-env": "1.7.0",
+    "nodemon": "1.18.3"
+  },
+  "scripts": {
+    "compile": "babel --presets env -d lib/ src/",
+    "start-dev": "DEBUG=app:* nodemon --exec babel-node index.js"
+  }
+}
