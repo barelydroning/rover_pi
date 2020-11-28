@@ -4,7 +4,7 @@ import SerialPort from 'serialport'
 
 const SERVER_IP_ADDRESS = 'http://192.168.1.161:3001'
 
-const SERIAL_PORT = '/dev/ttyAMA0'
+const SERIAL_PORT = '/dev/ttyUSB0'
 
 const socket = openSocket(SERVER_IP_ADDRESS)
 
@@ -20,8 +20,11 @@ socket.on('disconnected', () => {
   console.log('disconnected')
 })
 
-socket.on('command', command => {
-  console.log('command', command)
-  serial.write(JSON.stringify(command), 'ascii', error => { console.log('RESPONSE', error) })
-
+socket.on('command', ({ type, command }) => {
+  console.log('command', type)
+  if (type === 'motors') {
+    serial.write(JSON.stringify(command), 'ascii', error => { console.log('RESPONSE', error) })
+  } else if (type === 'kill') {
+    serial.write(JSON.stringify({ A: 0, B: 0 }), 'ascii')
+  }
 })
