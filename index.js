@@ -11,7 +11,7 @@ const socket = openSocket(SERVER_IP_ADDRESS)
 
 const RESPONSE_TYPE = {
   INFORMATION: 'information',
-  STATE_UPDATE: 'state_update'
+  STATE_UPDATE: 'state-update'
 }
 
 const serial = new SerialPort(SERIAL_PORT, { baudRate: 115200, autoOpen: true }, error => { console.log('CALLBACK', error) })
@@ -27,7 +27,10 @@ socket.on('connect', () => {
     const responseType = json['type']
     
     delete json['type']
-    console.log(responseType, json) // TODO : emit to socket
+
+    if (responseType === RESPONSE_TYPE.STATE_UPDATE) {
+      socket.emit('rover_data', json)
+    }
   })
 })
 
