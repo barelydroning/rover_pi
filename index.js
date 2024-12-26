@@ -39,9 +39,9 @@ const setLightColor = color => {
       redLight.writeSync(1)
       blueLight.writeSync(1)
       break
-    case 'orange':
-      redLight.writeSync(1)
+    case 'cyan':
       greenLight.writeSync(1)
+      blueLight.writeSync(1)
       break
     case 'white':
       redLight.writeSync(1)
