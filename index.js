@@ -98,6 +98,6 @@ socket.on('command', ({ type, command }) => {
   } else if (type === 'kill') {
     serial.write(JSON.stringify({ A: 0, B: 0 }), 'ascii')
   } else if (type ==='color') {
-    setLightColor(command)
+    setLightColor(command.color)
   }
 })
