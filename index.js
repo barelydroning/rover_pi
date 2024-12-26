@@ -16,9 +16,47 @@ const redLight = new Gpio(RED_PIN, 'out')
 const greenLight = new Gpio(GREEN_PIN, 'out')
 const blueLight = new Gpio(BLUE_PIN, 'out')
 
-redLight.writeSync(0)
-greenLight.writeSync(0)
-blueLight.writeSync(0)
+const setLightColor = color => {
+  redLight.writeSync(0)
+  greenLight.writeSync(0)
+  blueLight.writeSync(0)
+
+  switch (color) {
+    case 'red':
+      redLight.writeSync(1)
+      break
+    case 'green':
+      greenLight.writeSync(1)
+      break
+    case 'blue':
+      blueLight.writeSync(1)
+      break
+    case 'yellow':
+      redLight.writeSync(1)
+      greenLight.writeSync(1)
+      break
+    case 'purple':
+      redLight.writeSync(1)
+      blueLight.writeSync(1)
+      break
+    case 'orange':
+      redLight.writeSync(1)
+      greenLight.writeSync(1)
+      break
+    case 'white':
+      redLight.writeSync(1)
+      greenLight.writeSync(1)
+      blueLight.writeSync(1)
+      break
+    case 'off':
+      redLight.writeSync(0)
+      greenLight.writeSync(0)
+      blueLight.writeSync(0)
+      break
+  }
+}
+
+setLightColor('off')
 
 const socket = openSocket(SERVER_IP_ADDRESS)
 
@@ -33,9 +71,7 @@ const parser = serial.pipe(new Delimiter({ delimiter: '\n' }))
 
 socket.on('connect', () => {
   console.log('connected')
-  redLight.writeSync(1)
-  greenLight.writeSync(1)
-  blueLight.writeSync(1)
+  setLightColor('white')
 
   socket.emit('connect_rover')
 
@@ -62,16 +98,6 @@ socket.on('command', ({ type, command }) => {
   } else if (type === 'kill') {
     serial.write(JSON.stringify({ A: 0, B: 0 }), 'ascii')
   } else if (type ==='color') {
-    switch (color) {
-      case 'red':
-        redLight.writeSync(1)
-        break
-      case 'green':
-        greenLight.writeSync(1)
-        break
-      case 'blue':
-        blueLight.writeSync(1)
-        break
-    }
+    setLightColor(command)
   }
 })
