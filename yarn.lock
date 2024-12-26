@@ -210,7 +210,7 @@ atob@^2.1.2:
 babel-cli@6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-cli/-/babel-cli-6.26.0.tgz#502ab54874d7db88ad00b887a06383ce03d002f1"
-  integrity sha1-UCq1SHTX24itALiHoGODzgPQAvE=
+  integrity sha512-wau+BDtQfuSBGQ9PzzFL3REvR9Sxnd4LKwtcHAiPjhugA7K/80vpHXafj+O5bAqJOuSefjOx5ZJnNSR2J1Qw6Q==
   dependencies:
     babel-core "^6.26.0"
     babel-polyfill "^6.26.0"
@@ -1295,6 +1295,14 @@ engine.io-parser@~2.2.0:
     blob "0.0.5"
     has-binary2 "~1.0.2"
 
+epoll@^4.0.1:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/epoll/-/epoll-4.0.2.tgz#08478c21501da95e3a066b89df313763bb6aace9"
+  integrity sha512-4KtBBSBYAfyta2/4TIFT4P7pZdDjU6UPvdzWcF4Fy6Q300V08Wdj/82ovAZBUDra6TTjsKsfy12Qxuwc3ob+Qw==
+  dependencies:
+    bindings "^1.5.0"
+    nan "^2.17.0"
+
 escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
@@ -2006,6 +2014,11 @@ latest-version@^3.0.0:
   dependencies:
     package-json "^4.0.0"
 
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
+
 lodash@^4.17.4:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
@@ -2156,6 +2169,11 @@ nan@^2.12.1, nan@^2.14.1:
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.2.tgz#f5376400695168f4cc694ac9393d0c9585eeea19"
   integrity sha512-M2ufzIiINKCuDfBSAUr1vWQ+vuVcA9kqx8JJUsbQi6yf1uGRyb7HfpdfUr5qLXf3B/t8dPvcjhKMmlfnP47EzQ==
 
+nan@^2.17.0:
+  version "2.22.0"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.22.0.tgz#31bc433fc33213c97bad36404bb68063de604de3"
+  integrity sha512-nbajikzWTMwsW+eSsNm3QwlOs7het9gGJU5dDZzRTQGk03vyBOauxgI4VakDzE0PtsGTmXPsXTbbjVhRwR5mpw==
+
 nanomatch@^1.2.9:
   version "1.2.13"
   resolved "https://registry.yarnpkg.com/nanomatch/-/nanomatch-1.2.13.tgz#b87a8aa4fc0de8fe6be88895b38983ff265bd119"
@@ -2296,6 +2314,14 @@ one-time@^1.0.0:
   integrity sha512-5DXOiRKwuSEcQ/l0kGCF6Q3jcADFv5tSmRaJck/OqkVFcOzutB134KRSfF0xDrL39MNnqxbHBbUUcjZIhTgb2g==
   dependencies:
     fn.name "1.x.x"
+
+onoff@6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/onoff/-/onoff-6.0.3.tgz#b8e41aec363bebbb3d76e47d74b8ae9cea8d4280"
+  integrity sha512-xtVlwRDzswYM69bzzIui/qzu7QHsFnjsQiCV1iYVA/HXt5xdc9utc97SYAlXzK8wAhIN7+H7MaVqh2vpfdKk9A==
+  dependencies:
+    epoll "^4.0.1"
+    lodash.debounce "^4.0.8"
 
 os-homedir@^1.0.0:
   version "1.0.2"
