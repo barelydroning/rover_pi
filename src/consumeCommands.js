@@ -52,11 +52,19 @@ const setLightColor = color => {
 // Initialize lights to off
 setLightColor('off')
 
+const RATE_LIMIT_MS = 20; // 50Hz update rate
+let lastUpdate = 0;
+
 roverServer.on(EVENTS.COMMAND, ({ type, command }) => {
-  console.log('Received command:', type, command)
+  const now = Date.now();
   if (type === 'motors') {
-    roverServer.writeToSerial(command)
-  } else if (type === 'kill') {
+    if (now - lastUpdate >= RATE_LIMIT_MS) {
+      roverServer.writeToSerial(command);
+      lastUpdate = now;
+    }
+  }
+  console.log('Received command:', type, command)
+  if (type === 'kill') {
     roverServer.writeToSerial({ A: 0, B: 0 })
   } else if (type ==='color') {
     setLightColor(command.color)
