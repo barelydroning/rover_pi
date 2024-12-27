@@ -1,4 +1,4 @@
-import roverServer from '../server.js'
+import roverServer, { EVENTS } from '../server.js'
 import { Gpio } from 'onoff'
 
 const RED_PIN = 17
