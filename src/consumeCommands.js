@@ -62,3 +62,11 @@ roverServer.on(EVENTS.COMMAND, (type, command) => {
     setLightColor(command.color)
   }
 })
+
+roverServer.on(EVENTS.CONNECTION_STATUS, (status) => {
+  if (status === 'connected') {
+    setLightColor('white')
+  } else if (status === 'disconnected') {
+    setLightColor('red')
+  }
+})
