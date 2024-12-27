@@ -1,3 +1,4 @@
+
 import openSocket from 'socket.io-client'
 import SerialPort from 'serialport'
 import Delimiter from '@serialport/parser-delimiter'
@@ -11,7 +12,7 @@ const RESPONSE_TYPE = {
   STATE_UPDATE: 'state-update'
 }
 
-export const EVENTS = {
+const EVENTS = {
   CONNECTION_STATUS: 'connectionStatus',
   COLOR_CHANGE: 'colorChange',
   COMMAND: 'command',
@@ -103,3 +104,4 @@ const roverServer = new RoverServer()
 
 // Export the singleton instance
 module.exports = roverServer
+module.exports.EVENTS = EVENTS
