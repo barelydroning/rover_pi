@@ -52,7 +52,7 @@ const setLightColor = color => {
 // Initialize lights to off
 setLightColor('off')
 
-roverServer.on(EVENTS.COMMAND, (type, command) => {
+roverServer.on(EVENTS.COMMAND, ({ type, command }) => {
   console.log('Received command:', type, command)
   if (type === 'motors') {
     roverServer.writeToSerial(command)
