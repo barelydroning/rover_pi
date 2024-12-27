@@ -1,4 +1,3 @@
-
 import openSocket from 'socket.io-client'
 import SerialPort from 'serialport'
 import Delimiter from '@serialport/parser-delimiter'
@@ -79,23 +78,7 @@ class RoverServer extends EventEmitter {
   }
 
   handleCommand(type, command) {
-    switch (type) {
-      case 'motors':
-        this.writeToSerial(command).catch(error => {
-          console.error('Failed to write motor command:', error)
-        })
-        break
-      case 'kill':
-        this.writeToSerial({ A: 0, B: 0 }).catch(error => {
-          console.error('Failed to write kill command:', error)
-        })
-        break
-      case 'color':
-        this.emit(EVENTS.COLOR_CHANGE, command.color)
-        break
-      default:
-        console.warn('Unknown command type:', type)
-    }
+    this.emit(EVENTS.COMMAND, { type, command })
   }
 }
 
