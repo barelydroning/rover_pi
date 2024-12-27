@@ -8,6 +8,7 @@
     "babel-polyfill": "6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "onoff": "6.0.3",
+    "pm2": "5.4.3",
     "serialport": "^9.0.2",
     "socket.io-client": "^2.0.4",
     "winston": "^3.3.3"
