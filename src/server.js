@@ -28,6 +28,26 @@ class RoverServer extends EventEmitter {
     })
     this.parser = this.serial.pipe(new Delimiter({ delimiter: '\n' }))
     this.setupEventListeners()
+
+    // Proper cleanup on process exit
+    process.on('SIGINT', this.cleanup.bind(this));
+    process.on('SIGTERM', this.cleanup.bind(this));
+    process.on('exit', this.cleanup.bind(this));
+  }
+
+  cleanup() {
+    console.log('Cleaning up...');
+
+    if (this.serial) {
+      console.log('Closing serial port...');
+      this.serial.close();
+    }
+    
+    if (this.socket) {
+      console.log('Disconnecting socket...')
+      this.socket.disconnect();
+    }
+    process.exit();
   }
 
   writeToSerial(data) {
