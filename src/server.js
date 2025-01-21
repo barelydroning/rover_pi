@@ -3,7 +3,7 @@ import SerialPort from 'serialport'
 import Delimiter from '@serialport/parser-delimiter'
 import { EventEmitter } from 'events'
 
-const SERVER_IP_ADDRESS = 'http://192.168.0.85:3001'
+const SERVER_IP_ADDRESS = 'http://192.168.0.87:3001'
 const SERIAL_PORT = '/dev/ttyUSB0'
 
 const RESPONSE_TYPE = {
